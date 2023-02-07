@@ -1,20 +1,22 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import styles from '../styles/Home.module.css'
-import { useRouter } from 'next/router';
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import styles from "../styles/Home.module.css";
+import { useRouter } from "next/router";
+import { MainLayout } from "@/components/layout";
+import { NextPageWithLayout } from "model";
 
-export default function Home() {
-  const router = useRouter()
+const Home: NextPageWithLayout = () => {
+  const router = useRouter();
   const goToDetailPage = () => {
     router.push({
-      pathname: 'post/[postId]',
+      pathname: "post/[postId]",
       query: {
         postId: 123,
-        ref: 'social'
-      }
-    })
-  }
+        ref: "social",
+      },
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -30,7 +32,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.tsx</code>
         </p>
 
@@ -38,9 +40,7 @@ export default function Home() {
           <a>Go to About Page</a>
         </Link> */}
 
-        <button onClick={goToDetailPage}>
-          Go to Post Detail Page
-        </button>
+        <button onClick={goToDetailPage}>Go to Post Detail Page</button>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -74,7 +74,7 @@ export default function Home() {
           </a>
         </div>
 
-        <div style={{ marginTop: '2000px' }}></div>
+        <div style={{ marginTop: "2000px" }}></div>
 
         <Link href="/about" legacyBehavior>
           <a>Go to About Page</a>
@@ -87,12 +87,16 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
+
+Home.Layout = MainLayout;
+
+export default Home;

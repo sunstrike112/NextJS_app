@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic'
 import Header from '@/components/common/header';
+import { MainLayout } from '@/components/layout';
 
 // const Header = dynamic(() => import('@/components/common/header'), { ssr: false })
 
@@ -43,6 +44,8 @@ export default function AboutPage(props: AboutPageProps) {
     <button onClick={handleNextClick}>Next Page</button>
   </div>
 }
+
+AboutPage.Layout = MainLayout
 
 export async function getStaticProps() {
   console.log('Get static props')
